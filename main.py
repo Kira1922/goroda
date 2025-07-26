@@ -8,6 +8,9 @@ def get_coordinates(city, key):
         return results[0]['geometry']['lat'], results[0]['geometry']['lng']
     else:
         return "Город не найден"
+except Exception as e:
+        return f"Общая ошибка: {e}"
+
 
 key = '97c595bec990457d975c12c16a4ec4a7'
 city = 'Москва'
