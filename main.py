@@ -7,8 +7,14 @@ def get_coordinates(city, key):
         results = geocoder.geocode(city, language='ru')
         if results:
             lat = round(results[0]['geometry']['lat'], 2)
-            lng = round(results[0]['geometry']['lng'], 2)
-            return f"Широта: {lat}, Долгота: {lng}"
+            lon = round(results[0]['geometry']['lng'], 2)
+            country = results[0]['components']['country']
+
+            if 'state' in results[0]['components']:
+                region = results[0]['components']['state']
+                return f"Широта: {lat}, Долгота: {lon}\n Страна: {country}. Регион: {region}"
+            else:
+                return f"Широта: {lat}, Долгота: {lon}\nСтрана: {country}"
         else:
             return "Город не найден"
     except Exception as e:
@@ -26,7 +32,7 @@ key = '7aa3e03722094e7ba4e560632d9facc6'
 
 window = Tk()
 window.title("Поиск координат города")
-window.geometry("320x100")
+window.geometry("320x150")
 
 entry = Entry()
 entry.pack()
