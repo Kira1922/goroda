@@ -17,7 +17,7 @@ def get_coordinates(city, key):
 def show_coordinates(event=None):
     city = entry.get()
     coordinates = get_coordinates(city, key)
-    label.config(text=f"Координаты города {city}: {coordinates}")
+    label.config(text=f"Координаты города {city}:\n {coordinates}")
 
 
 
@@ -26,7 +26,7 @@ key = '7aa3e03722094e7ba4e560632d9facc6'
 
 window = Tk()
 window.title("Поиск координат города")
-window.geometry("200x100")
+window.geometry("320x100")
 
 entry = Entry()
 entry.pack()
